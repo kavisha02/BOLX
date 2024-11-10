@@ -114,8 +114,8 @@ function MyProducts() {
           cproducts.map((item, index) => {
             return (
               <div key={item._id} className="card m-3 ">
-                <div onClick={() => handleLike(item._id)} className="icon-con">
-                  <FaHeart className="icons" />
+                <div onClick={() => handleLike(item._id)} className="red-icons">
+                  <FaHeart className="red-icons" />
                 </div>
                 <img
                   width="300px"
@@ -123,12 +123,12 @@ function MyProducts() {
                   src={API_URL + "/" + item.pimage}
                 />
 
-                <p className="m-2">
+                '<p className="m">
                   {" "}
                   {item.pname} | {item.category}{" "}
-                </p>
+                </p>'
                 <h3 className="m-2 text-danger"> {item.price} </h3>
-                <p className="m-2 text-success"> {item.pdesc} </p>
+                <p className="m-2 text-desc"> {item.pdesc} </p>
               </div>
             );
           })}
@@ -143,7 +143,7 @@ function MyProducts() {
             return (
               <div key={item._id} className="card m-3 ">
                 <div onClick={() => handleLike(item._id)} className="icon-con">
-                  <FaHeart className="icons" />
+                  <FaHeart className="red-icons" />
                 </div>
                 <img
                   width="300px"
@@ -154,12 +154,12 @@ function MyProducts() {
                   {" "}
                   {item.pname} | {item.category}{" "}
                 </p>
-                <h3 className="m-2 text-danger"> {item.price} </h3>
-                <p className="m-2 text-success"> {item.pdesc} </p>
-                <p className="m-2 text-success">
+                <h3 className="product-price2"> {item.price} </h3>
+                <p className="text-desc3"> {item.pdesc} </p>
+                <p className="text-desc3">
                   <Link to={`/edit-product/${item._id}`}>Edit Product</Link>
                 </p>
-                <button onClick={() => handleDel(item._id)}>
+                <button class="btn-new"onClick={() => handleDel(item._id)}>
                   Delete Product
                 </button>
               </div>

@@ -35,7 +35,10 @@
 }
 
 .price-text {
-    color: #002f34;
+    color:#991d63;
+    padding-top: 5px;
+    padding-left: 7px;
+    
 
 }
 
@@ -50,4 +53,47 @@
     padding: 0px 15px;
     margin-top: 10px;
     margin-left: 10px;
+}
+
+.btn-new{
+    background-color: #9e5dcd;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    /*display: flex;
+    align-items: center;*/
+    justify-content: center;
+    margin: 5px;
+    border: 2px solid black;
+}
+.btn-link {
+    background-color: #9e5dcd; /* Dark purple background */
+    color: white; /* White text */
+    padding: 8px 12px; /* Padding for consistent button size */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-size: 14px; /* Font size to match button */
+    display: inline-flex; /* Use inline-flex for centering */
+    align-items: center; /* Vertically center the text */
+    justify-content: center; /* Horizontally center the text */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: center; /* Center text inside the link */
+    transition: background-color 0.3s ease; /* Smooth transition for hover */
+    line-height: 1.4; /* Ensure consistent line height */
+    height: 40px; /* Set a fixed height to match the button */
+    border:2px solid black;
+}
+
+.btn-link:hover {
+    background-color: #6A0DAD; /* Slightly lighter purple on hover */
+    color:white;
+}
+.btn-new:hover {
+    background-color: #6A0DAD; /* Slightly lighter purple on hover */
+    color:white;
+}
+.m{
+    font-size: 24px;
 }

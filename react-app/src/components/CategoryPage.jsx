@@ -4,9 +4,9 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Categories from "./Categories";
 import { FaHeart } from "react-icons/fa";
-import './Home.css';
+//import './Home.css';
 import API_URL from "../constants";
-import './Categories.css'
+//import './Categories.css'
 
 
 function CategoryPage() {
@@ -39,7 +39,7 @@ function CategoryPage() {
                 }
             })
             .catch((err) => {
-                alert('Server Err.')
+                alert('Server Errkk.')
             })
             const url2 = API_URL + '/liked-products';
             let data = { userId: localStorage.getItem('userId') }
@@ -164,7 +164,7 @@ function CategoryPage() {
 
                                 <p className="m-2"> {item.pname}  | {item.category} </p>
                                 <h3 className="m-2 text-danger"> {item.price} </h3>
-                                <p className="m-2 text-success"> {item.pdesc} </p>
+                                <p className="m-2 text-descs"> {item.pdesc} </p>
                             </div>
                         )
 
@@ -187,9 +187,9 @@ function CategoryPage() {
                                         
                                 </div>
                                 <img width="250px" height="150px" src={API_URL + '/' + item.pimage} />
-                                <h3 className="m-2 price-text"> Rs. {item.price} /- </h3>
+                                <h3 className="price-text  "> Rs. {item.price} /- </h3>
                                 <p className="m-2"> {item.pname}  | {item.category} </p>
-                                <p className="m-2 text-success"> {item.pdesc} </p>
+                                <p className="text-desc3"> {item.pdesc} </p>
                             </div>
                         )
 

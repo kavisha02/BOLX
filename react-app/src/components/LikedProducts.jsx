@@ -13,8 +13,11 @@ function LikedProducts() {
     const navigate = useNavigate()
 
     const [products, setproducts] = useState([]);
+    const [likedproducts, setlikedproducts] = useState([]);
+    const [refresh, setrefresh] = useState(false);
     const [cproducts, setcproducts] = useState([]);
     const [search, setsearch] = useState('');
+    const [issearch, setissearch] = useState(false);
 
     // useEffect(() => {
     //     if (!localStorage.getItem('token')) {
@@ -34,7 +37,7 @@ function LikedProducts() {
             .catch((err) => {
                 alert('Server Err.')
             })
-    }, [])
+    }, [refresh])
 
     const handlesearch = (value) => {
         setsearch(value);
@@ -60,9 +63,14 @@ function LikedProducts() {
         })
         setcproducts(filteredProducts)
     }
-
-    const handleLike = (productId) => {
+    const handleLike = (productId, e) => {
+        e.stopPropagation();
         let userId = localStorage.getItem('userId');
+
+        if (!userId) {
+            alert('Please Login first.')
+            return;
+        }
 
         const url = API_URL + '/like-product';
         const data = { userId, productId }
@@ -70,12 +78,43 @@ function LikedProducts() {
             .then((res) => {
                 if (res.data.message) {
                     alert('Added to Favourites')
+                    setrefresh(!refresh)
+
                 }
             })
             .catch((err) => {
                 alert('Server Err.')
             })
 
+    }
+
+    const handleDisLike = (productId, e) => {
+        e.stopPropagation();
+        let userId = localStorage.getItem('userId');
+
+        if (!userId) {
+            alert('Please Login first.')
+            return;
+        }
+
+        const url = API_URL + '/dislike-product';
+        const data = { userId, productId }
+        axios.post(url, data)
+            .then((res) => {
+                if (res.data.message) {
+                    alert('Removed from Favourites')
+                    setlikedproducts(likedproducts.filter(item => item._id !== productId));
+                    setrefresh(!refresh);
+
+                }
+            })
+            .catch((err) => {
+                alert('Server Err.')
+            })
+
+    }
+    const handleProduct = (id) => {
+        navigate('/product/' + id)
     }
 
 
@@ -97,7 +136,7 @@ function LikedProducts() {
 
                                 <p className="m-2"> {item.pname}  | {item.category} </p>
                                 <h3 className="m-2 text-danger"> {item.price} </h3>
-                                <p className="m-2 text-success"> {item.pdesc} </p>
+                                <p className="m-2 text-desc"> {item.pdesc} </p>
                             </div>
                         )
 
@@ -106,24 +145,32 @@ function LikedProducts() {
 
             <h5> ALL RESULTS  </h5>
 
-            <div className="d-flex justify-content-center flex-wrap">
+
+            {!issearch && <div className="d-flex justify-content-center flex-wrap">
                 {products && products.length > 0 &&
                     products.map((item, index) => {
 
                         return (
-                            <div key={item._id} className="card m-3 ">
-                                <div onClick={() => handleLike(item._id)} className="icon-con">
-                                    <FaHeart className="red-icons" />
+                            <div onClick={() => handleProduct(item._id)} key={item._id} className="card m-3">
+                                <div className="icon-con">
+                                    {
+                                        likedproducts.find((likedItem)=> likedItem._id == item._id) ? 
+                                        
+                                        <FaHeart onClick={(e) => handleDisLike(item._id, e)}className="icons" />:
+                                        <FaHeart onClick={(e) => handleLike(item._id, e)}className="red-icons" />
+                                        
+                                    }
+                                    
                                 </div>
-                                <img width="300px" height="200px" src={API_URL + '/' + item.pimage} />
+                                <img width="250px" height="150px" src={API_URL + '/' + item.pimage} />
+                                <h3 className="price-text"> Rs. {item.price} /- </h3>
                                 <p className="m-2"> {item.pname}  | {item.category} </p>
-                                <h3 className="m-2 text-danger"> {item.price} </h3>
-                                <p className="m-2 text-success"> {item.pdesc} </p>
+                                <p className="text-desc3"> {item.pdesc} </p>
                             </div>
                         )
 
                     })}
-            </div>
+            </div>}
 
 
 

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css'
 import categories from './CategoriesList';
-import './Categories.css'
+//import './Categories.css'
 
 function Categories(props) {
 
@@ -10,7 +10,7 @@ function Categories(props) {
     return (
         <div className='cat-container'>
             <div>
-                <span className='pr-3'>All Categories:</span>
+                <span className='pr-3' style={{color:'#991d63',fontWeight:'bold',fontSize:'19px'}}>All Categories:</span>
                 {categories && categories.length > 0 &&
                     categories.map((item, index) => {
                         return (

@@ -27,20 +27,20 @@ function MyProfile() {
             <Header />
             <div className="m-3 p-3" >
                 <h3 className="text-center mt-2"> USER PROFILE </h3>
-                <table className="table table-bordered">
-                    <thead>
-                        <tr>
-                            <td> USERNAME </td>
-                            <td> EMAIL ID </td>
-                            <td> MoBILE </td>
+                <table className="table table-bordered" style={{ backgroundColor: 'red' }}>
+                    <thead style={{ backgroundColor: 'red' }}>
+                        <tr style={{ backgroundColor: 'red' }}>
+                            <td style={{ backgroundColor: '#b587db' }}> USERNAME </td>
+                            <td style={{ backgroundColor: '#b587db' }}> EMAIL ID </td>
+                            <td style={{ backgroundColor: '#b587db' }}> MoBILE </td>
                         </tr>
                     </thead>
                     <tbody>
 
                         <tr>
-                            <td>  {user.username} </td>
-                            <td>  {user.email} </td>
-                            <td>  {user.mobile} </td>
+                            <td style={{ backgroundColor: '#b587db' }}>  {user.username} </td>
+                            <td style={{ backgroundColor: '#b587db' }}>  {user.email} </td>
+                            <td style={{ backgroundColor: '#b587db' }}>  {user.mobile} </td>
                         </tr>
                     </tbody>
                 </table>

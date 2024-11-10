@@ -56,15 +56,17 @@ function Home() {
     }
 
     const handleClick = () => {
+        console.log(localStorage.getItem('userLoc'));
 
-        const url = API_URL + '/search?search=' + search + '&loc=' + localStorage.getItem('userLoc');
+
+        const url = API_URL + '/search?search=' + search ;
         axios.get(url)
             .then((res) => {
                 setcproducts(res.data.products);
                 setissearch(true);
             })
             .catch((err) => {
-                alert('Server Err.')
+                alert('Server Err11.')
             })
 
         let filteredProducts = products.filter((item) => {
@@ -151,7 +153,7 @@ function Home() {
             <Categories handleCategory={handleCategory} />
             {issearch && cproducts &&
                 <h5> SEARCH RESULTS
-                    <button className="clear-btn" onClick={() => setissearch(false)}> CLEAR </button>
+                   
                 </h5>}
 
             {issearch && cproducts && cproducts.length == 0 && <h5> No Results Found </h5>}
@@ -167,8 +169,8 @@ function Home() {
                                 <img width="300px" height="200px" src={API_URL + '/' + item.pimage} />
 
                                 <p className="m-2"> {item.pname}  | {item.category} </p>
-                                <h3 className="m-2 text-danger"> {item.price} </h3>
-                                <p className="m-2 text-success"> {item.pdesc} </p>
+                                <h3 className="price-text "> {item.price} </h3>
+                                <p className="text-desc3"> {item.pdesc} </p>
                             </div>
                         )
 
@@ -192,9 +194,10 @@ function Home() {
                                     
                                 </div>
                                 <img width="250px" height="150px" src={API_URL + '/' + item.pimage} />
-                                <h3 className="m-2 price-text"> Rs. {item.price} /- </h3>
+                                
                                 <p className="m-2"> {item.pname}  | {item.category} </p>
-                                <p className="m-2 text-success"> {item.pdesc} </p>
+                                <p className="text-desc3"> {item.pdesc} </p>
+                                <h3 className="price-text ">₹ {item.price} </h3>
                             </div>
                         )
 

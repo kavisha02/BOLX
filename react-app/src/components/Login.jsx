@@ -3,6 +3,7 @@ import Header from "./Header";
 import { useState } from "react";
 import axios from "axios";
 import API_URL from "../constants";
+import "./Home.css"
 
 function Login() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function Login() {
     <div>
       <Header />
       <div className="p-3 m-3">
-        <h3> Welocme to Login Page! </h3>
+        <h3> Welcome to Login Page! </h3>
         <br></br>
         USERNAME
         <input
@@ -56,12 +57,12 @@ function Login() {
           }}
         />
         <br></br>
-        <button className="btn btn-primary mr-3" onClick={handleApi}>
+        <button className="btn-new" onClick={handleApi}>
           {" "}
           LOGIN{" "}
         </button>
-        <Link className="btn btn-primary mr-3" to="/signup">
-          {"    "}
+        <Link className="btn-link" to="/signup">
+          {" "}
           SIGNUP{" "}
         </Link>
       </div>

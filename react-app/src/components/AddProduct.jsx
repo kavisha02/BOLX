@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import categories from "./CategoriesList";
 import API_URL from "../constants";
-import './Categories.css'
+//import './Categories.css'
 
 function AddProduct() {
 
@@ -26,6 +26,9 @@ function AddProduct() {
     const handleApi = () => {
 
         navigator.geolocation.getCurrentPosition((position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            localStorage.setItem('userLoc', `${latitude},${longitude}`);
             const formData = new FormData();
             formData.append('plat', position.coords.latitude)
             formData.append('plong', position.coords.longitude)
@@ -72,9 +75,8 @@ function AddProduct() {
                 <label> Product Category </label>
                 <select className="form-control" value={category}
                     onChange={(e) => { setcategory(e.target.value) }}>
-                    <option> Bikes </option>
-                    <option> Mobiles </option>
-                    <option> Cloth </option>
+                        <option> Bicycles </option>
+                    
                     {
                         categories && categories.length > 0 &&
                         categories.map((item, index) => {
@@ -95,7 +97,7 @@ function AddProduct() {
                     onChange={(e) => {
                         setpimage2(e.target.files[0])
                     }} />
-                <button onClick={handleApi} className="btn btn-primary mt-3"> SUBMIT </button>
+                <button onClick={handleApi} className="btn-new"> SUBMIT </button>
             </div>
 
         </div>

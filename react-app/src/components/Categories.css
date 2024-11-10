@@ -1,25 +1,46 @@
 .card {
-    background-color: #F9F9FF; /* Light background for cards */
+    background-color: #c4abc4; /* Light background for cards */
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     transition: transform 0.3s ease;
+    width: 450px; /* Set a smaller width */
+    height: auto; /* Let height adjust based on content */
+    padding: 10px; /* Adjust padding */
 }
 
 .card:hover {
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
 .price-text {
-    color: #4B0082; /* Dark purple for price */
+    color:#991d63; /* Dark purple for price */
     font-weight: bold;
     font-size: 18px;
 }
-.text-success {
-    color: #3CB371; /* Light green for product description */
-    font-size: 14px;
+.new{
+    color: #24023d;
+}
+.text-desc {
+    color:rgb(2, 82, 2); /* Light green for product description */
+    font-size: 20px;
+}
+.text-desc2 {
+    color:rgb(2, 82, 2); /* Light green for product description */
+    font-size: 20px;
+    font-weight: bold;
+}
+.text-desc3{
+    color:rgb(2, 82, 2); /* Light green for product description */
+    font-size: 15px;
+    padding-left: 8px;
+    
 }
 .icons {
     color: #b587db; /* Purple for unliked */
     cursor: pointer;
+}
+.m-2{
+    color:#4B0082;
+    font-size: 20px;
 }
 
 .red-icons {
@@ -37,14 +58,6 @@
     transition: background-color 0.3s;
 } */
 
-.clear-btn:hover {
-    background-color: #B0A0C5; /* Slightly darker lilac on hover */
-} */
-h5 {
-    color: #4B0082; /* Dark purple for headings */
-    font-weight: bold;
-    margin: 20px 0;
-}
 .category {
     color: #5C2E91; /* Lighter purple for category links */
     font-weight: bold;

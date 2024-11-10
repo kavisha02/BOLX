@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css'
-import '../App.css'; // or './styles.css' depending on your setup
+//import '../App.css'; // or './styles.css' depending on your setup
 
 import { FaSearch } from "react-icons/fa";
 import { useState } from 'react';
@@ -20,9 +20,9 @@ function Header(props) {
 
     let locations = [
         {
-            "latitude": 15.3878,
-            "longitude": 73.8732 ,
-            "placeName": "Bits Pilani, Pilani Campus"
+            "latitude": 28.3562179,
+            "longitude":75.5855782,
+            "placeName": "Bits Pilani"
         }
       
     ]
@@ -32,7 +32,7 @@ function Header(props) {
 
             <div className="header">
                 <Link className='links' to="/">
-                <img src="/bolxlogo1.png" alt="Logo" className="logo-image" />
+                <img src="/bolxfinal.png" alt="Logo" className="logo-image" />
 
                 </Link>
                 <span style={{color: '#4d2270'}}>{locations[0].placeName}</span> {/* Displaying the single location */}
@@ -67,7 +67,7 @@ function Header(props) {
                         //background: '#002f34',
                         width: '80px',
                         height: '40px',
-                        color: '#fff',
+                        color: 'black',
                         fontSize: '14px',
                         borderRadius: '5px',
                         cursor:'pointer'
@@ -115,7 +115,7 @@ function Header(props) {
                     </div>
                     <div>
                         {!localStorage.getItem('token') ?
-                            <Link to="/login" style={{ display: 'block', textAlign: 'center', margin: '40px auto 0', color:'white' }}>
+                            <Link to="/login" style={{ display: 'block', textAlign: 'center', margin: '40px auto 0', color:'black' }}>
                                 LOGIN
                             </Link>:
                       

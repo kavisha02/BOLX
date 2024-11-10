@@ -8,16 +8,7 @@ let schema = new mongoose.Schema({
   pimage: String,
   pimage2: String,
   addedBy: mongoose.Schema.Types.ObjectId,
-  pLoc: {
-    type: {
-      type: String,
-      enum: ["Point"],
-      default: "Point",
-    },
-    coordinates: {
-      type: [Number],
-    },
-  },
+ 
 });
 
 schema.index({ pLoc: "2dsphere" });
@@ -26,33 +17,28 @@ const Products = mongoose.model("Products", schema);
 
 module.exports.search = (req, res) => {
   console.log(req.query);
+  //let search = req.query.search||"";
+ 
 
-  let latitude = req.query.loc.split(",")[0];
-  let longitude = req.query.loc.split(",")[1];
 
-  let search = req.query.search;
-  Products.find({
-    $or: [
-      { pname: { $regex: search } },
-      { pdesc: { $regex: search } },
-      { price: { $regex: search } },
-    ],
-    pLoc: {
-      $near: {
-        $geometry: {
-          type: "Point",
-          coordinates: [parseFloat(latitude), parseFloat(longitude)],
-        },
-        $maxDistance: 500 * 1000,
-      },
-    },
-  })
-    .then((results) => {
-      res.send({ message: "success", products: results });
+  let search = req.query.search||"";
+  if (!req.query.loc || !req.query.loc.includes(',')){
+    Products.find({
+      $or: [
+        { pname: { $regex: search } },
+        { pdesc: { $regex: search } },
+        { price: { $regex: search } },
+        { category: { $regex: search}},
+      ],
+      
     })
-    .catch((err) => {
-      res.send({ message: "server err...." });
-    });
+      .then((results) => {
+        res.send({ message: "success", products: results });
+      })
+      .catch((err) => {
+        res.send({ message: "server err...." });
+      });
+  }
 };
 
 module.exports.addProduct = (req, res) => {
@@ -60,8 +46,7 @@ module.exports.addProduct = (req, res) => {
   console.log(req.body.category);
   console.log(req.body);
 
-  const plat = req.body.plat;
-  const plong = req.body.plong;
+ 
   const pname = req.body.pname;
   const pdesc = req.body.pdesc;
   const price = req.body.price;
@@ -79,10 +64,7 @@ module.exports.addProduct = (req, res) => {
     pimage,
     pimage2,
     addedBy,
-    pLoc: {
-      type: "Point",
-      coordinates: [plat, plong],
-    },
+    
   });
   product
     .save()

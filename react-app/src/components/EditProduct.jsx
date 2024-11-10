@@ -110,9 +110,8 @@ function EditProduct() {
             setcategory(e.target.value);
           }}
         >
-          <option> Bikes </option>
-          <option> Mobiles </option>
-          <option> Cloth </option>
+          <option> Bicycles </option>
+          
           {categories &&
             categories.length > 0 &&
             categories.map((item, index) => {
@@ -144,7 +143,7 @@ function EditProduct() {
         <img src={API_URL + "/" + poldimage2} width={100} height={50} />
         <br></br>
 
-        <button onClick={handleApi} className="btn btn-primary mt-3">
+        <button onClick={handleApi} className="btn-new">
           {" "}
           SUBMIT{" "}
         </button>
