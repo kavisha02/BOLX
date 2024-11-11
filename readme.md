@@ -23,4 +23,11 @@ The BOLX (OLX for BITS) application is a digital marketplace tailored for the BI
 `nodemon index.js`
 
 # Screenshots
+![](node-app/images/i1.png) 
+![](node-app/images/i2.png) 
+![](node-app/images/i3.png) 
 ![](node-app/images/14.png) 
+![](node-app/images/15.png) 
+![](node-app/images/i6.png) 
+![](node-app/images/i7.png) 
+![](node-app/images/i8.png) 
